@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #201f1f;
+}
+
+/* Container */
+.create-account-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #201f1f;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards; /* Fade-in animation */
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 2s 0.5s forwards; /* Delay for a smoother effect */
+}
+
+.image-section img {
+    border-color: #e7dede85;
+    width: 730px;
+    height: 1024px;
+    transform: scale(0.95);
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-section img:hover {
+    transform: scale(1); /* Zoom in on hover */
+}
+
+/* Form Section */
+.form-section {
+    flex: 1;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #908d8d61;
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards; /* Delayed fade-in animation */
+}
+
+.form-content {
+    width: 120%;
+    max-width: 400px;
+}
+
+/* Title and Paragraph */
+h1 {
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1.5s 1.2s forwards; /* Delay for title */
+}
+
+p {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1.5s 1.3s forwards; /* Delay for paragraph */
+}
+
+a {
+    color: #FF4081;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #d9356f; /* Color change on hover */
+}
+
+/* Form Labels and Inputs */
+label {
+    display: block;
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1.5s 1.4s forwards; /* Delay for labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(194, 190, 190, 0.35);
+    border-radius: 12px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1.4s 1.4s forwards; /* Delay for inputs */
+}
+
+/* Input focus animation */
+input:focus {
+    border-color: #FF4081;
+    box-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+    outline: none;
+}
+
+small {
+    font-size: 14px;
+    color: #fffbfb;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Button Styles */
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: linear-gradient(97deg, #EE1D52 0%, #EA7C69 100%);
+    color: white;
+    border: none;
+    border-radius: 192px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.36px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    opacity: 0;
+    animation: fadeIn 1.3s 1.5s forwards; /* Delayed animation */
+}
+
+/* Button hover effect */
+button:hover {
+    background: linear-gradient(97deg, #d91b4b 0%, #d36a59 100%);
+    transform: translateY(-3px); /* Slight move up on hover */
+}
+
+/* Checkbox Animation */
+input[type="checkbox"] {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+    transform: scale(1.1); /* Slightly bigger when checked */
+}
+
+/* General Modal Styles */
+.modal-content {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+}
+
+.modal-header {
+    background-color: #343a40;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.modal-header .close {
+    color: white;
+    opacity: 0.8;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-header .close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+    color: #333;
+}
+
+.modal-body p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    border-top: 1px solid #dee2e6;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #343a40;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #495057;
+}
+
+/* Modal-specific content for Terms of Use and Privacy Policy */
+.terms-content,
+.privacy-content {
+    padding: 10px;
+    color: #495057;
+}
+
+.terms-content h5,
+.privacy-content h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.terms-content p,
+.privacy-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-header {
+        padding: 10px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .modal-body {
+        max-height: 300px;
+    }
+}
+
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

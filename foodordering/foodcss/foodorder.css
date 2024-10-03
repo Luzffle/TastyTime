@@ -1,0 +1,367 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body, html {
+    font-family: 'Poppins' sans-serif;
+    background-color: #F3F3F3;
+    height: 100%;
+}
+.container {
+    margin-left: 240px;
+    padding: 20px;
+    background-color: #F3F3F3;
+    width: 800px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    background-color: #FFF;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.sidebar {
+    width: 250px;
+    height:max-content 250px;
+    background: #ffffff;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    display: flex;
+    color: #FF4081;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.logo-image {
+    width: 40px; 
+    height: 40px;
+    margin-right: 0px;
+}
+
+.logo span {
+    color: #000000;
+    font-weight: bold;
+}
+
+.menu-item {
+    display: block;
+    align-items: center;
+    padding: 15px 20px;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.menu-item img {
+    width: 30px; 
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin: 10% 0;
+}
+
+.menu li a {
+    color: #979797;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.menu li a.active {
+    background-color: #FF0062;
+    align-items: center;
+    color: rgb(252, 252, 252);
+} 
+.menu li a:hover {
+    background-color: #f3f3f3;
+    color: #979797;
+    transform: scale(1.05);
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    background-color: #EE1D52;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.logout img {
+    width: 30px;
+    height: auto;
+    vertical-align: middle; 
+    margin-right: 85px;
+}
+
+.logout:hover {
+    background-color: #ff4d8c;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th, .order-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #FF0062;
+    color: white;
+}
+
+.order-table td {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.order-table a {
+    color: #FF0062;
+    text-decoration: none;
+}
+
+.order-table a:hover {
+    text-decoration: underline;
+}
+
+.balance h2 {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.balance-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.balance-amount {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: auto;
+}
+
+.balance-buttons .btn {
+    background-color: #FF4081;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.balance-buttons .btn:hover {
+    background-color: #FF4081;
+}
+
+.cart h2 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.cart-item {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 100px;
+    width: auto;
+    border-bottom: 2px solid #ddd;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls .btn {
+    background-color: #FF4081;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity-controls input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+/* Order Summary */
+.order-summary {
+    position: fixed;
+    padding: 20px;
+    background-color: #ffffff;
+    margin-left: 1030px;
+    height: 100vh;
+    width: auto;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    justify-content: space-between;
+}
+
+.main-content {
+    margin-bottom: 10px;
+}
+
+.user-info h2 {
+    font-size: 20px;
+}
+
+.user-info p {
+    margin-top: 0px;
+    margin-bottom: auto;
+}
+
+.user-info .btn {
+    background-color: #FF4081;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.user-info .btn:hover {
+    background-color: #FF4081;
+}
+
+.order-details h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.order-details ul {
+    list-style: none;
+    margin-bottom: 70px;
+}
+
+.order-details ul li {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.order-total {
+    font-size: 18px;
+}
+
+.order-total p span {
+    margin-left: 69px;
+}
+
+.order-total h3 {
+    font-size: 18px;
+}
+
+.order-total h3 span {
+    margin-left: 165px;
+}
+
+.payment-section {
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    text-align: center;
+    border-radius: 15px;
+    background-color: #00000077;
+    color: #000000;
+    height: 25px;
+    width: 200px;
+    font-size: 15px;
+}
+
+
+.checkout.btn {
+    border-color: #000000;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FF0062;
+    color: #ffffff;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+}
+
+.confirm.btn {
+    font-size: 15;
+    font-style: bold;
+    background-color: #FF4081;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    color: white;
+   
+}

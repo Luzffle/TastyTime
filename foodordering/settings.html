@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyTime Account Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="foodcss/setting.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h1 class="logo">
+            <img src="foodimages/logo.png" alt="Tasty Time Logo" class="logo-image">TASTY<span>TIME</span></h1>
+        <ul class="menu">
+            <li><a href="dashboard.html" id="dashboard" class="menu-item"><img src="foodimages/Db.png" alt="Dashboard Icon">Dashboard</a></li>
+            <li><a href="foodorder.html" id="foodorder" class="menu-item"><img src="foodimages/Fo.png" alt="Food Order Icon">Food Order</a></li>
+            <li><a href="orderhistory.html" id="orderhistory" class="menu-item"><img src="foodimages/Oh.png" alt="Order History Icon">Order History</a></li>
+            <li><a href="#" id="settings" class="menu-item active"><img src="foodimages/SettingW.png" alt="Settings Icon">Setting</a></li>
+        </ul>
+        <a href="login.html" id="logout-btn" class="btn logout">
+            <img src="foodimages/Logout.png" alt="Logout Icon" class="logout-icon">Logout</a>
+    </aside>
+
+    <div class="container">
+        <div class="content">
+            <h1>Account Settings</h1>
+            <div class="settings-menu">
+                <button class="settings-btn">Profile Information</button>
+                
+                <button class="settings-btn">Change Password</button>
+                <button class="settings-btn">Payment Methods</button>
+                <button class="settings-btn">Locations</button>
+            </div>
+        </div>
+        <script src="foodjs/settings.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('foodimages/bg.jpg');
+    background-image: url("https://img.freepik.com/free-photo/vegetables-set-left-black-slate_1220-685.jpg?w=1380&t=st=1727256291~exp=1727256891~hmac=280f6554f9ffc71628725f18e841a208ff5069851a92bd24617c1cc7c6d1eda4");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    display: flex;
+    color: #FF4081;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.logo-image {
+    width: 60px; 
+    height: 60px;
+    margin-right: 0px;
+}
+
+.logo span {
+    color: #fffdfd;
+    font-weight: bold;
+}
+.email{
+    color:#ffffff;
+}
+.password{
+    color:#ffffff;
+}
+.keep-signed-in{
+    color: #ffffff;
+}
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password img {
+    width: 24px;
+    height: 24px;
+}
+
+
+.forgot-password {
+    font-size: 12px;
+    text-align: right;
+    display: block;
+    margin-top: 5px;
+    color: #FF4081;
+}
+
+.checkbox-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+}
+
+.login-btn {
+    background-color: #FF4081;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    height: 1px; 
+    background-color: #ccc; 
+    margin: 15px 0;
+    width: 100%; 
+}
+
+.divider-text {
+    text-align: center; 
+    font-size: 14px; 
+    color: #ffffff; 
+    margin: 15px 0; 
+}
+
+.login-btn:hover {
+    background-color: #E23370;
+}
+
+.create-account {
+    font-size: 14px;
+}
+
+.create-account a {
+    color: #FF4081;
+    text-decoration: none;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+}

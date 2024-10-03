@@ -1,0 +1,347 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyTime Food Order</title>
+    <link rel="stylesheet" href="foodcss/foodorder.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* General modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        .modal-body {
+            margin: 20px 0;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            background-color: #f04d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-footer button.cancel {
+            background-color: #ccc;
+            color: black;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Success modal styles */
+        .success-modal {
+            background-color: #FF5661;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            z-index: 101;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .success-modal h3 {
+            margin: 10px 0;
+        }
+
+        .success-modal button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #FF5661;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .success-modal button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Form input styles */
+        .form-input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <h1 class="logo">
+            <img src="foodimages/logo.png" alt="Tasty Time Logo" class="logo-image">TASTY<span>TIME</span></h1>
+        <ul class="menu">
+            <li><a href="dashboard.html" id="dashboard" class="menu-item"><img src="foodimages/Db.png" alt="Dashboard Icon">Dashboard</a></li>
+            <li><a href="#" id="foodorder" class="menu-item active"><img src="foodimages/FoW.png" alt="Food Order Icon">Food Order</a></li>
+            <li><a href="orderhistory.html" id="orderhistory" class="menu-item"><img src="foodimages/Oh.png" alt="Order History Icon">Order History</a></li>
+            <li><a href="settings.html" id="settings" class="menu-item"><img src="foodimages/Setting.png" alt="Settings Icon">Setting</a></li>
+        </ul>
+        <a href="login.html" id="logout-btn" class="btn logout">
+            <img src="foodimages/Logout.png" alt="Logout Icon" class="logout-icon">Logout</a>
+    </aside>
+
+    <div>
+        <!-- Order Summary -->
+        <aside class="order-summary">
+            <div class="main-content">
+                <div class="balance">
+                    <h2>Wallet Balance</h2>
+                    <div class="balance-box">
+                        <span class="balance-amount">$<span id="wallet-balance">0.00</span></span>
+                        <div class="balance-buttons">
+                            <button class="btn top-up">Top Up</button>
+                            <button class="btn transfer">Transfer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-info"> 
+                <h2>User Information</h2>
+                <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+                <h2>Address</h2>
+                <pre id="user-address">Loading...</pre>
+                <button class="change-address btn">Change</button>
+            </div>
+            
+            <div class="order-details">
+                <h2>Order Menu</h2>
+                <ul id="order-list">
+                    <!-- Order items will be dynamically loaded here -->
+                    <li>Pepperoni Pizza <span>$5.59</span></li>
+                    <li>Cheese Burger <span>$5.59</span></li>
+                </ul>
+                
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <label for="payment-method">Choose Payment Method:</label>
+                    <select id="payment-method" class="dropdown">
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="gcash">GCash</option>
+                        <option value="credit">Credit/Debit Card</option>
+                        <option value="wallet">Wallet (Balance: $<span id="wallet-balance">0.00</span>)</option>
+                    </select>
+                </div>
+            
+                <div class="order-total">
+                    <p>Service Charge: <span id="service-charge">+ $1.00</span></p>
+                    <h3>Total: <span id="total-amount">$202.00</span></h3>
+                    <button class="checkout btn">CHECKOUT</button>
+                </div>
+            </div>
+            
+        </aside>
+    </div>
+
+<div class="container">
+    <div class="cart">
+        <h2><i class="fas fa-shopping-cart"></i> Cart</h2>
+            <div class="cart-item">
+                <img src="https://img.freepik.com/free-photo/photo-delicious-hamburger-isolated-white-background_125540-3378.jpg" alt="Cheese Burger">
+                <span>Cheese Burger</span>
+                <span class="price">$5.59</span>
+                <div class="quantity-controls">
+                    <button class="edit btn">Edit</button>
+                    <input type="number" value="1">
+                    <button class="delete btn">Delete</button>
+                </div>
+            </div>
+    </div>            <!-- Add more cart items here -->
+</div>
+
+    <!-- GCash Modal -->
+    <div id="gcashModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>GCash Payment</h2>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your GCash mobile number:</p>
+                <input type="text" id="gcash-number" class="form-input" placeholder="GCash Mobile Number">
+            </div>
+            <div class="modal-footer">
+                <button class="cancel" onclick="closeGcashModal()">Cancel</button>
+                <button onclick="finalizeGcashPayment()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit/Debit Modal -->
+    <div id="creditModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Credit/Debit Payment</h2>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your card details:</p>
+                <input type="text" id="card-number" class="form-input" placeholder="Card Number">
+                <input type="text" id="expiry-date" class="form-input" placeholder="Expiry Date (MM/YY)">
+                <input type="text" id="cvv" class="form-input" placeholder="CVV">
+            </div>
+            <div class="modal-footer">
+                <button class="cancel" onclick="closeCreditModal()">Cancel</button>
+                <button onclick="finalizeCreditPayment()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="content">
+            <h3>Payment Successful!</h3>
+            <p>Thank you!</p>
+            <button onclick="printReceipt()">Print Receipt</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch cart items from the server
+        function loadCart() {
+            fetch('get_cart.php')
+                .then(response => response.json())
+                .then(data => {
+                    const cartContainer = document.querySelector('.cart');
+                    cartContainer.innerHTML = ''; // Clear the cart
+        
+                    // Loop through cart items and display them
+                    data.cart_items.forEach(item => {
+                        const cartItemHTML = `
+                            <div class="cart-item">
+                                <span>${item.product_name}</span>
+                                <span class="price">$${item.price.toFixed(2)}</span>
+                                <div class="quantity-controls">
+                                    <input type="number" value="${item.quantity}" disabled>
+                                </div>
+                            </div>`;
+                        cartContainer.innerHTML += cartItemHTML;
+                    });
+        
+                    // Update the total and service fee
+                    document.querySelector('.order-total h3 span').innerText = `$${data.total.toFixed(2)}`;
+                    document.querySelector('.order-total p span').innerText = `$${data.service_fee.toFixed(2)}`;
+        
+                    // Update wallet balance
+                    document.getElementById('wallet-balance').innerText = data.wallet_balance.toFixed(2);
+                })
+                .catch(error => console.error('Error loading cart:', error));
+        }
+        
+        // Call loadCart() when the page loads
+        document.addEventListener('DOMContentLoaded', loadCart);
+
+            document.querySelector('.checkout').addEventListener('click', function() {
+                const selectedPayment = document.getElementById('payment-method').value;
+                const totalAmount = parseFloat(document.querySelector('.order-total h3 span').innerText.substring(1));
+                const walletBalance = parseFloat(document.getElementById('wallet-balance').innerText);
+            
+                if (selectedPayment === 'wallet') {
+                    // Check if wallet balance is sufficient
+                    if (walletBalance >= totalAmount) {
+                        finalizeWalletPayment(totalAmount);
+                    } else {
+                        alert('Insufficient wallet balance. Please choose another payment method.');
+                    }
+                } else if (selectedPayment === 'gcash') {
+                    openGcashModal();
+                } else if (selectedPayment === 'credit') {
+                    openCreditModal();
+                } else {
+                    // For Cash on Delivery
+                    completeOrder(); // Handle order completion
+                }
+            });
+            
+            function finalizeWalletPayment(totalAmount) {
+                // Logic to finalize wallet payment
+                // This should send the totalAmount to the server to deduct from the user's wallet
+                fetch('process_wallet_payment.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: totalAmount })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Payment successful! Your wallet has been charged.');
+                        document.getElementById('successModal').style.display = 'flex';
+                    } else {
+                        alert('Error processing payment.');
+                    }
+                });
+            }
+         
+                function loadUserInfo() {
+                    fetch('get_user_info.php')
+                        .then(response => response.json())
+                        .then(data => {
+                            // ... same code for user info and address ...
+                
+                            // Load cart items
+                            const orderList = document.getElementById('order-list');
+                            orderList.innerHTML = ''; // Clear the current items
+                
+                            let orderTotal = 0;
+                            data.cart_items.forEach(item => {
+                                const itemHTML = `<li>${item.product_name} <span>$${(item.price * item.quantity).toFixed(2)}</span></li>`;
+                                orderList.innerHTML += itemHTML;
+                                orderTotal += item.price * item.quantity;
+                            });
+                
+                            // Add service charge
+                            orderTotal += data.service_charge;
+                            document.getElementById('total-amount').innerText = `$${orderTotal.toFixed(2)}`;
+                
+                            // Update wallet balance and service charge
+                            document.getElementById('wallet-balance').innerText = data.wallet_balance.toFixed(2);
+                            document.getElementById('service-charge').innerText = `+ $${data.service_charge.toFixed(2)}`;
+                        })
+                        .catch(error => console.error('Error loading user info:', error));
+                }
+                
+                document.addEventListener('DOMContentLoaded', loadUserInfo);
+        
+                
+            </script>
+            
+</body>
+</html>
+
+

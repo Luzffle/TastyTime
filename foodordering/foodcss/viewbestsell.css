@@ -1,0 +1,140 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.best-seller {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap */
+}
+
+.item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    max-width: 200px; /* Limit item width */
+}
+
+.item img {
+    width: 150px;
+    height: auto;
+}
+
+/* Button styles */
+.add-to-cart-btn, .buy-now-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    transition: background 0.3s;
+    width: 100%; /* Make buttons full width */
+}
+
+/* Gradient backgrounds for buttons */
+.add-to-cart-btn {
+    background: linear-gradient(45deg, #ff4081, #ff6f20);
+}
+
+.buy-now-btn {
+    background: linear-gradient(45deg, #2196F3, #21CBF3);
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(45deg, #ff6f20, #ff4081);
+}
+
+.buy-now-btn:hover {
+    background: linear-gradient(45deg, #21CBF3, #2196F3);
+}
+
+.view-all-link {
+    display: block;
+    margin-top: 10px;
+    color: purple;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+}  
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-items .item {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Food Order Section Styling */
+.food-order-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.food-order-section h2 {
+    text-align: center;
+}
+
+#foodOrderList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#foodOrderList li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
