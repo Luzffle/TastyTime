@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyTime Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="foodcss/login.css">
+    <style>
+        /* Basic Styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f400;
+            opacity: 0;
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        .login-box {
+            padding: 20px;
+            width: 325px;
+            background-color: #8f8c8c6a;
+            box-shadow: 0 0 15px rgba(255, 253, 253, 0.369);
+            transform: translateY(-30px);
+            animation: slideIn 0.8s ease-out forwards; /* Slide-in animation */
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            font-size: 18px;
+            padding-left: 10px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        #btnwrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .g_id_signin {
+            display: flex;
+            justify-content: center;
+            width: 90%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-30px); }
+            to { transform: translateY(0); }
+        }
+
+        /* Hover effect on button */
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out; /* Smooth hover effects */
+        }
+
+        .login-btn:hover {
+            background-color: #e8377b;
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Input field focus animation */
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth focus effects */
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #ff6347;
+            box-shadow: 0 0 8px rgba(255, 99, 71, 0.4); /* Highlight the field on focus */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="logo">
+                <img src="foodimages/logo.png" alt="Tasty Time Logo" class="logo-image">TASTY<span>TIME</span>
+            </h1>
+
+            <!-- Adjusted form for login.php -->
+            <form action="login.php" method="POST">
+                <div class="input-group">
+                    <label class="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="johndoe@gmail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label class="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="**********" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">👁️‍🗨️</span>
+                    </div>
+                    <a href="forgotpass.html" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <script>
+                    function togglePasswordVisibility() {
+                        const passwordInput = document.getElementById('password');
+                        const togglePasswordIcon = document.querySelector('.toggle-password');
+                    
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            togglePasswordIcon.textContent = '👁️'; 
+                        } else {
+                            passwordInput.type = 'password';
+                            togglePasswordIcon.textContent = '👁️‍🗨️'; 
+                        }
+                    }
+                </script>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="keep-signed-in" name="keep-signed-in">
+                    <label class="keep-signed-in">Keep me signed in</label>
+                </div>
+             
+                <button type="submit" class="login-btn">Login</button>
+
+                <div class="divider"></div>
+                <div class="divider-text">or</div>
+                
+                <!-- Google Sign-In -->
+                <script src="https://accounts.google.com/gsi/client" async defer></script>
+                <script>
+                    function handleCredentialResponse(response) {
+                        fetch("auth_init.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ request_type: 'user_auth', credential: response.credential }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status == 1) {
+                                const responsePayload = data.pdata;
+                                const profileHTML = `
+                                    <h3>Welcome ${responsePayload.given_name}! 
+                                    <a href="javascript:void(0);" onclick="logout(${responsePayload.sub});">Log Out</a></h3>
+                                    <img src="${responsePayload.picture}" alt="Profile Picture"/>
+                                    <p><b>Auth ID: </b>${responsePayload.sub}</p>
+                                    <p><b>Name: </b>${responsePayload.name}</p>
+                                    <p><b>Email: </b>${responsePayload.email}</p>`;
+                
+                                document.querySelector(".pro-data").innerHTML = profileHTML;
+                                document.querySelector("#btnwrap").classList.add("hidden");
+                                document.querySelector(".pro-data").classList.remove("hidden");
+                
+                                // Redirect to dashboard.html after successful login
+                                window.location.href = 'dashboard.html';
+                            }
+                        })
+                        .catch(console.error);
+                    }
+                
+                    function signOut(authID) {
+                        document.querySelector(".pro-data").innerHTML = '';
+                        document.querySelector("#btnwrap").classList.remove("hidden");
+                        document.querySelector(".pro-data").classList.add("hidden");
+                    }
+                </script>
+                
+
+                <!-- Google Sign-In Button -->
+                <div id="btnwrap">
+                    <div id="g_id_onload"
+                        data-client_id="595414800813-r30juh0bpghmubo27it8r2n0sp8u99qn.apps.googleusercontent.com"
+                        data-context="signin"
+                        data-ux_mode="popup"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+
+                    <div class="g_id_signin"
+                        data-type="standard"
+                        data-shape="rectangular"
+                        data-theme="outline"
+                        data-text="signin_with"
+                        data-size="large"
+                        data-logo_alignment="left">
+                    </div>
+                </div>
+
+                <!-- Display the user's profile info -->
+                <div class="pro-data hidden"></div>
+                
+                <p class="create-account">
+                    <a href="createaccount.html">Create an account</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

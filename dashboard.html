@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyTime Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="foodcss/dashboard.css">
+    <style>
+        /* Add this CSS for the search input and icon */
+        .search-container {
+            position: relative;
+            display: inline-block;  
+        }
+
+        #search {
+            padding: 10px 40px 10px 20px; 
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%; 
+            transform: translateY(-50%);
+            border: none; 
+            background: none; 
+            cursor: pointer; 
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <h1 class="logo">
+            <img src="foodimages/logo.png" alt="Tasty Time Logo" class="logo-image">TASTY<span>TIME</span></h1>
+        <ul class="menu">
+            <br>
+            <li><a href="#" id="dashboard" class="menu-item active"><img src="foodimages/DbW.png" alt="Dashboard Icon">Dashboard</a></li>
+            <li><a href="foodorder.html" id="foodorder" class="menu-item"><img src="foodimages/Fo.png" alt="Food Order Icon">Food Order</a></li>
+            <li><a href="orderhistory.html" id="orderhistory" class="menu-item"><img src="foodimages/Oh.png" alt="Order History Icon">Order History</a></li>
+            <li><a href="settings.html" id="settings" class="menu-item"><img src="foodimages/Setting.png" alt="Settings Icon">Setting</a></li>
+        </ul>
+        <a href="login.html" id="logout-btn" class="btn logout">
+            <img src="foodimages/Logout.png" alt="Logout Icon" class="logout-icon">Logout</a>
+    </aside>
+
+    <div class="container">
+        <main class="main-content">
+            <header class="header">
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="What do you want to eat today...">
+                     <button id="clear-btn" class="clear-icon hidden" onclick="clearSearch()">❌</button>
+                      </div>
+                <div class="search-results hidden" id="search-results">
+                    <p>BURGER</p>
+                    <p>PIZZA</p>
+                    <p>PASTA</p>
+                </div>
+                <div class="user-profile" id="user-profile">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRT2B3Q9r8RbAJ0hHKlA_gWIzITzNbDOySyQ&s" alt="User Profile" id="profile-img" class="profile-img">
+                    <p>Angelo</p>
+                </div>
+                <div id="account-info" class="hidden">
+                    <p><strong>Account Name:</strong> Angelo</p>
+                    <p><strong>Wallet:</strong> 1234-5678-9101</p>  
+                    <p><strong>Address:</strong> 1234 Main St, Springfield</p>
+                    <p><strong>Contact:</strong> (555) 123-4567</p>
+                   ]
+                </div>
+            </header>
+
+            <section class="food-list">
+                <h2>Best Seller</h2> 
+                <a href="#" class="view-all-link">View All →</a>
+                <div class="food-items">
+                    <div class="food-card">
+                        <img src="https://img.freepik.com/free-photo/front-view-chicken-burger-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_140725-25937.jpg?t=st=1727267644~exp=1727271244~hmac=7355ebc94100326e88581907c036723c17beff99d6c29fae5c324557cd3a2447&w=1060" alt="Burger">
+                        <p>Cheese Burger</p>
+                        <span>₱ 45.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <img src="https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg" alt="Pizza">
+                        <p>Peperroni Pizza</p>
+                        <span>₱ 99.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="99.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <img src="https://img.freepik.com/premium-photo/margherita-pizza-with-fresh-basil-leaves-classic-italian-pizza-with-mozzarella-tomato-sauce_875755-23175.jpg?w=1060" alt="Pizza">
+                        <p>Margherita Pizza</p>
+                        <span>₱ 99.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="foodphp/addtocart.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="99.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                <div class="food-card">
+                    <img src="https://img.freepik.com/premium-photo/celebratory-plate-cacio-e-pepe-yummy-delicious-cacio-e-pepe-food-image-photography_1020697-667182.jpg?w=1060" alt="Pizza">
+                    <p>Spaghetti Carbonara</p>
+                    <span>₱ 120.00</span>
+                    <div class="btn-container">
+                        <form method="POST" action="your_php_file.php">
+                            <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                            <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                            <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                        </form>
+                        <form method="POST" action="your_php_file.php">
+                            <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Popup Modal -->
+            <div id="popupModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>All Best Seller Items</h2>
+                    </div>
+
+                    <div class="modal-items">
+                        <!-- Repeated items in modal -->
+                        <div class="item">
+                            <img src="https://img.freepik.com/free-photo/front-view-chicken-burger-with-cheese-green-salad-wooden-desk-sandwich-fast-food-meal-food_140725-25937.jpg?t=st=1727267644~exp=1727271244~hmac=7355ebc94100326e88581907c036723c17beff99d6c29fae5c324557cd3a2447&w=1060" alt="Burger">
+                            <p>Cheese   
+                                Burger</p>
+                            <span>₱ 45.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg" alt="Pizza">
+                            <p>Peperroni 
+                                Pizza</p>
+                            <span>₱ 99.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/premium-photo/margherita-pizza-with-fresh-basil-leaves-classic-italian-pizza-with-mozzarella-tomato-sauce_875755-23175.jpg?w=1060" alt="Pizza">
+                            <p>Margherita 
+                                Pizza</p>
+                            <span>₱ 99.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/premium-photo/celebratory-plate-cacio-e-pepe-yummy-delicious-cacio-e-pepe-food-image-photography_1020697-667182.jpg?w=1060" alt="Pizza">
+                            <p>Spaghetti
+                                Carbonara</p>
+                            <span>₱ 99.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/premium-photo/indian-delicious-cuisine-paneer-tikka-masala_762785-262964.jpg?w=1060" alt="Pizza">
+                            <p>Chicken 
+                                Tikka Masala</p>
+                            <span>₱ 99.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/premium-photo/chicken-ceasar-salad-fresh-garden-vegetables-with-parmesan-cheese-light-dressing_817921-49167.jpg?w=1060" alt="Pizza">
+                            <p>Caesar 
+                                 Salad</p>
+                            <span>₱ 70.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://img.freepik.com/premium-photo/rich-chocolate-lava-cake-with-vanilla-ice-cream_1174497-105177.jpg?w=1060" alt="Pizza">
+                            <p>Chocolate 
+                                Lava Cake</p>
+                            <span>₱ 89.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                            <!-- Add more items -->
+                    </div>
+                </div>        
+            </div>    
+            </section>
+
+            <section class="food-list1">
+                <h2>Main Menu</h2>
+                <a href="#" class="view-all-link1">View All →</a>
+                <div class="food-items1">
+                    <div class="food-card1">
+                        <img src="https://img.freepik.com/premium-photo/bowl-adobo-de-chancho-with-spiced-pork_974629-485003.jpg?w=1060" alt="menu">
+                        <p> Pork Adobo de Pancho</p>
+                        <span>₱ 150.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="food-items1">
+                        <div class="food-card1">
+                            <img src="https://img.freepik.com/premium-photo/bowl-soup-with-green-leaf-top-it_960396-543340.jpg?w=1060" alt="menu">
+                            <p>Sinigang na Baboy</p>
+                            <span>₱ 150.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-items1">
+                    <div class="food-card1">
+                        <img src="https://img.freepik.com/free-photo/green-curry-bowl-spices-wooden-table_1150-21366.jpg?t=st=1727353515~exp=1727357115~hmac=27c7e880ef24e8fbe81f8ce025e1a264547c0f1c40c9b5190b7e927786ebd87e&w=1060" alt="menu">
+                        <p>Special Chicken Curry</p>
+                        <span>₱ 150.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-items1">
+                    <div class="food-card1">
+                        <img src="https://img.freepik.com/premium-photo/giant-pork-belly-lechon-kawali-with-sauce-served-dish-isolated-grey-background-side-view_689047-2903.jpg?w=1060" alt="menu">
+                        <p>Special Lechon Kawali</p>
+                        <span>₱ 120.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+
+                 <!-- Popup Modal -->
+                 <div id="popupModal1" class="modal1">
+                    <div class="modal-content1">
+                        <div class="modal-header1">
+                            <span class="close1">&times;</span>
+                            <h2>All Main Menu</h2>
+                        </div>
+
+                        <div class="modal-items1">
+                            <!-- Repeated items in modal -->
+                            <div class="item1">
+                                <img src="https://img.freepik.com/premium-photo/bowl-adobo-de-chancho-with-spiced-pork_974629-485003.jpg?w=1060" alt="menu">
+                                <p> Pork Adobo de Pancho</p>
+                                <span>₱ 149.00</span>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                            </div>
+                        <div class="item1">
+                            <img src="https://img.freepik.com/premium-photo/bowl-soup-with-green-leaf-top-it_960396-543340.jpg?w=1060" alt="menu">
+                            <p>Sinigang na Baboy</p>
+                            <span>₱ 149.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item1">
+                            <img src="https://img.freepik.com/free-photo/green-curry-bowl-spices-wooden-table_1150-21366.jpg?t=st=1727353515~exp=1727357115~hmac=27c7e880ef24e8fbe81f8ce025e1a264547c0f1c40c9b5190b7e927786ebd87e&w=1060" alt="menu">
+                            <p>Special Chicken Curry</p>
+                            <span>₱ 149.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item1">
+                            <img src="https://img.freepik.com/premium-photo/giant-pork-belly-lechon-kawali-with-sauce-served-dish-isolated-grey-background-side-view_689047-2903.jpg?w=1060" alt="menu">
+                            <p>Special Lechon Kawali</p>
+                             <span>₱ 149.00</span>
+                             <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item1">
+                            <img src="https://img.freepik.com/premium-photo/rendang-randang-is-spicy-meat-cuisine-that-uses-mixture-various-herbs-spices_960396-559519.jpg?w=1060" alt="menu">
+                            <p>Special Beef Steak</p>
+                            <span>₱ 149.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <div class="item1">
+                            <img src="https://assets.unileversolutions.com/recipes-v2/166747.jpg" alt="menu">
+                            <p>Special Pinakbet</p>
+                            <span>₱ 79.50</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                        </div>
+                        <!-- Add more items -->
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <section class="food-list2">
+                <h2>Desserts</h2>
+                <a href="#" class="view-all-link2">View All →</a>
+                <div class="food-items2">
+                    <div class="food-card2">
+                         <img src="https://img.freepik.com/premium-photo/rich-chocolate-lava-cake-with-vanilla-ice-cream_1174497-105177.jpg?w=1060" alt="Pizza">
+                            <p>Chocolate Lava Cake</p>
+                            <span>₱ 79.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="food-card2">
+                        <img src="https://www.funkyasiankitchen.com/wp-content/uploads/2021/08/HALO-HALO-CHIA-P-prep-photo-20.jpg" alt="Vanilla Ice Cream">
+                        <p>Special Funky Halo-Halo</p>
+                        <span>₱ 69.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="food-card2">
+                        <img src="https://img.taste.com.au/04DwJyww/taste/2023/07/filipino-maja-blanca-recipe-189403-1.jpg" alt="Vanilla Ice Cream">
+                        <p>Maja Blanca</p>
+                        <span>₱ 59.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="food-card2">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJkTXU9unoVHL8vttc2UesY-giP_Dwdl3NWw&s" alt="Vanilla Ice Cream">
+                        <p>Cassava Cake</p>
+                        <span>₱ 59.00</span>
+                        <div class="btn-container">
+                            <form method="POST" action="your_php_file.php">
+                                <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                            </form>
+                            <form method="POST" action="your_php_file.php">
+                                <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                            </form>
+                        </div>
+                    </div>
+        
+                 <!-- Popup Modal -->
+            <div id="popupModal2" class="modal2">
+                <div class="modal-content2">
+                    <span class="close2">&times;</span>
+                    <h2>All Items</h2>
+                    <div class="modal-items2">
+                        <!-- Repeated items in modal -->
+                        <div class="item2">
+                            <img src="https://img.freepik.com/premium-photo/rich-chocolate-lava-cake-with-vanilla-ice-cream_1174497-105177.jpg?w=1060" alt="Pizza">
+                            <p>Chocolate Lava Cake</p>
+                            <p>₱ 79.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                        <div class="item2">
+                            <img src="https://www.funkyasiankitchen.com/wp-content/uploads/2021/08/HALO-HALO-CHIA-P-prep-photo-20.jpg" alt="Vanilla Ice Cream">
+                            <p>Special Funky Halo-Halo</p>
+                            <span>₱ 69.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                        <div class="item2">
+                            <img src="https://img.taste.com.au/04DwJyww/taste/2023/07/filipino-maja-blanca-recipe-189403-1.jpg" alt="Vanilla Ice Cream">
+                            <p>Maja Blanca</p>
+                            <span>₱ 59.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                        <div class="item2">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJkTXU9unoVHL8vttc2UesY-giP_Dwdl3NWw&s" alt="Vanilla Ice Cream">
+                            <p>Cassava Cake</p>
+                            <span>₱ 59.00</span>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                        <div class="item2   ">
+                            <img src="https://i0.wp.com/www.foodwithmae.com/wp-content/uploads/2020/03/Kutsinta-SteamedStickyRiceCakes-FWM.jpg?fit=1000%2C667" alt="Pizza">
+                            <p>Special Kutsinta</p>
+                            <p>₱ 59.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                        <!-- Add more items -->
+            </section>
+
+            <section class="food-list"></section>
+                <h2>Meals</h2>
+                <a href="#" class="view-all-link">View All →</a>
+                <div class="food-items">
+                    <div class="food-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                        <p>Special TapSilog</p>
+                        <p>₱ 59.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                        <p>Special TapSilog</p>
+                        <p>₱ 59.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                        <p>Special TapSilog</p>
+                        <p>₱ 59.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                        <p>Special TapSilog</p>
+                        <p>₱ 59.00</p>
+                            <div class="btn-container">
+                                <form method="POST" action="your_php_file.php">
+                                    <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                    <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                    <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                </form>
+                                <form method="POST" action="your_php_file.php">
+                                    <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                </form>
+                        </div>
+                    </div>
+                 <!-- Popup Modal -->
+            <div id="popupModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>All Best Seller Items</h2>
+                    <div class="modal-items">
+                        <!-- Repeated items in modal -->
+                        <div class="item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                            <p>Special TapSilog</p>
+                            <p>₱ 59.00</p>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                            <p>Special TapSilog</p>
+                            <p>₱ 59.00</p>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                            <p>Special TapSilog</p>
+                            <p>₱ 59.00</p>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                            <p>Special TapSilog</p>
+                            <p>₱ 59.00</p>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6pQcd8A4U0dkswb3hZPGFeXpVts6hNQoWw&s" alt="Chocolate Cake">
+                            <p>Special TapSilog</p>
+                            <p>₱ 59.00</p>
+                                <div class="btn-container">
+                                    <form method="POST" action="your_php_file.php">
+                                        <input type="hidden" name="product_id" value="1"> <!-- Dynamic product ID -->
+                                        <input type="hidden" name="price" value="45.00"> <!-- Dynamic price -->
+                                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                    <form method="POST" action="your_php_file.php">
+                                        <button type="submit" name="checkout" class="buy-now-btn">Checkout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <!-- Add more items -->
+            </section>
+        
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmationModal" class="hidden">
+            <div class="modal-content">
+                <h2>Order Confirmation</h2>
+                <p>Your order for <span id="order-item"></span> has been placed successfully.</p>
+                <p>Total: $<span id="order-price"></span></p>
+                <button id="proceed-to-payment">Proceed to Payment</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+    <script src="foodjs/dashboard.js"></script>
+    <script>
+        function toggleClearButton() {
+            const searchInput = document.getElementById('search');
+            const clearButton = document.getElementById('clear-btn');
+            if (searchInput.value) {
+                clearButton.classList.remove('hidden');
+            } else {
+                clearButton.classList.add('hidden');
+            }
+        }
+
+        function clearSearch() {
+            const searchInput = document.getElementById('search');
+            searchInput.value = '';
+            toggleClearButton();
+            searchInput.focus();
+        }
+    </script>
+</body>
+</html>

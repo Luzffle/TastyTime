@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="foodcss/editprofile.css">
+    <!-- Include the Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+</head>
+<body>
+    <!-- Edit Profile Form -->
+    <div class="container">
+        <div class="edit-profile">
+            <h2>Edit Profile</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label for="full-name">Full name</label>
+                    <input type="text" id="full-name" value="Puerto Rico">
+                </div>
+                <div class="form-group">
+                    <label for="nick-name">Nick name</label>
+                    <input type="text" id="nick-name" value="puerto_rico">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="youremail@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="text" id="phone" value="123-456-7890">
+                </div>
+
+                <!-- Location fields -->
+                <div class="form-group">
+                    <label for="municipality">Municipality</label>
+                    <input type="text" id="municipality" placeholder="Enter municipality">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Enter city">
+                </div>
+                <div class="form-group">
+                    <label for="barangay">Barangay</label>
+                    <input type="text" id="barangay" placeholder="Enter barangay">
+                </div>
+                <div class="form-group">
+                    <label for="district">District</label>
+                    <input type="text" id="district" placeholder="Enter district">
+                </div>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" id="street" placeholder="Enter street">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code">Postal Code</label>
+                    <input type="text" id="postal-code" placeholder="Enter postal code">
+                </div>
+
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div class="profile-page">
+        <div class="profile-info">
+            <img src="avatar.png" alt="Avatar">
+            <h3>Puerto Rico</h3>
+            <p>youremail@domain.com | +01 234 567 89</p>
+        </div>
+        <ul class="profile-menu">
+            <li>Edit profile information</li>
+            <li>Notifications: ON</li>
+            <li>Language: English</li>
+            <li>Security</li>
+            <li>Theme: Light mode</li>
+        </ul>
+        <ul class="profile-links">
+            <li>Help & Support</li>
+            <li>Contact us</li>
+            <li>Privacy policy</li>
+        </ul>
+    </div>
+
+    <!-- External JS file -->
+    <script src="js/profile.js"></script>
+
+    <script>
+        function initAutocomplete() {
+            var addressInput = document.getElementById('street');
+            var autocomplete = new google.maps.places.Autocomplete(addressInput, {
+                types: ['address'],  // You can customize the types based on your needs.
+            });
+
+            autocomplete.addListener('place_changed', function () {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                // Get the address components from the place details
+                var addressComponents = place.address_components;
+
+                // Populate the fields with the relevant data
+                document.getElementById('municipality').value = getAddressComponent(addressComponents, 'administrative_area_level_2');
+                document.getElementById('city').value = getAddressComponent(addressComponents, 'locality');
+                document.getElementById('barangay').value = getAddressComponent(addressComponents, 'sublocality_level_1');
+                document.getElementById('district').value = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                document.getElementById('street').value = getAddressComponent(addressComponents, 'route');
+                document.getElementById('postal-code').value = getAddressComponent(addressComponents, 'postal_code');
+            });
+        }
+
+        // Helper function to get specific address component
+        function getAddressComponent(components, type) {
+            for (var i = 0; i < components.length; i++) {
+                if (components[i].types.indexOf(type) !== -1) {
+                    return components[i].long_name;
+                }
+            }
+            return '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initAutocomplete();
+        });
+    </script>
+</body>
+</html>
